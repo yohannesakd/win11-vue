@@ -1,23 +1,39 @@
 <template>
+    <!-- h-[48px] -->
     <div
         id="taskbar"
-        class="text-white w-full flex justify-between items-center px-4"
+        class="text-white w-full flex justify-between items-center px-4 relative"
         :class="taskbarHeight"
     >
         <div id="taskbar__left">
-            <img src="/icons/widgets.png" class="taskbar__icon w-9" alt="" />
-        </div>
-        <div id="taskbar__center" class="flex gap-1">
             <img
-                id="start-btn"
-                src="/icons/start.png"
-                class="taskbar__icon w-11"
+                src="/icons/widgets.png"
+                class="taskbar__icon w-10"
                 alt=""
+                @click="handleTaskbarWidgets"
             />
+        </div>
+        <div
+            id="taskbar__center"
+            class="flex gap-1 absolute left-1/2 -translate-x-1/2"
+        >
+            <button
+                id="start-btn"
+                class="taskbar__icon w-11 transition duration-200 relative active: bg-opacity-10"
+                alt=""
+                @click="handleStartBtn"
+            >
+                <img
+                    src="/icons/start.png"
+                    alt=""
+                    class="py-2 px-2.5 active:scale-75 transition duration-200 ease-out absolute w-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                />
+            </button>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="-2 -1 26 26"
                 class="taskbar__icon w-11 p-2"
+                @click="handleTaskbarSearchBtn"
             >
                 <circle cx="13" cy="11" r="8" fill="#ffffff24"></circle>
                 <g
@@ -33,17 +49,21 @@
             <img src="/icons/settings.png" class="taskbar__icon w-11" alt="" />
             <img src="/icons/explorer.png" class="taskbar__icon w-11" alt="" />
             <img src="/icons/edge.png" class="taskbar__icon w-11" alt="" />
+            <img src="/icons/settings.png" class="taskbar__icon w-11" alt="" />
+            <img src="/icons/explorer.png" class="taskbar__icon w-11" alt="" />
         </div>
         <div id="taskbar__right" class="h-full flex gap-1">
             <div
                 id="taskbar-hidden-icons"
                 class="h-full px-1.5 hover:bg-gray-500 hover:bg-opacity-30 flex justify-center transition"
+                @click="handleTaskbarHiddenIcons"
             >
                 <chevron-icon direction="up" class="w-3"></chevron-icon>
             </div>
             <div
                 id="taskbar-action-center"
                 class="flex items-center justify-center gap-2 transition hover:bg-gray-500 hover:bg-opacity-30 my-1 px-2 rounded-md"
+                @click="handleTaskbarActionCenter"
             >
                 <div>
                     <img
@@ -78,6 +98,7 @@
             <div
                 id="taskbar-date"
                 class="flex flex-col justify-center text-xs transition hover:bg-gray-500 hover:bg-opacity-30 my-1 pl-2 pr-1 rounded-md"
+                @click="handleTaskbarDateAndTime"
             >
                 <span class="text-right tracking-wider">
                     {{ hours }}:{{ minutes }} {{ ampm }}</span
@@ -110,6 +131,9 @@ export default {
         taskbarHeight() {
             return `h-[${this.height}px]`;
         },
+        taskbarActions() {
+            return this.$store.getters.taskbarActions;
+        },
     },
     methods: {
         setCurrentTime() {
@@ -122,6 +146,9 @@ export default {
             this.ampm = hours > 12 ? "PM" : "AM";
             this.hours = hours > 12 ? hours % 12 : hours;
             this.minutes = minutes;
+        },
+        handleStartBtn() {
+            this.$store.commit("toggleStartMenu");
         },
     },
     mounted() {
@@ -141,6 +168,9 @@ export default {
 }
 .taskbar__icon:hover {
     background-color: rgba(128, 128, 128, 0.3);
+}
+.taskbar__icon:active {
+    background-color: rgba(96, 96, 96, 0.3);
 }
 .taskbar-action-icon {
     filter: invert();
