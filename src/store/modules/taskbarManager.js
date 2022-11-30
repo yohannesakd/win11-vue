@@ -17,4 +17,7 @@ export default {
             state.startMenu = !state.startMenu;
         },
     },
+    actions:{
+
+    }
 };

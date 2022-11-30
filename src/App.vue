@@ -5,11 +5,11 @@
         class="h-full overflow-hidden relative z-0"
     >
         <div
-            ref="desktopContainer"
             id="desktop-container"
+            ref="desktopContainer"
             class="h-full overflow-hidden relative z-0"
         >
-            <section id="screen" ref="screen" class="w-full">
+            <section id="screen" ref="screen" class="w-full relative">
                 <div
                     id="desktop-icon-container"
                     class="flex flex-col w-fit flex-wrap h-full gap-y-1.5 p-2 text-white"
@@ -24,7 +24,7 @@
                         <span class="text-center">some text here</span>
                     </div>
                 </div>
-                <div>
+                <div class="absolute inset-0">
                     <!-- <component v-for="" :is=""></component> -->
                     <!-- 
                         let apps = [a,b,c]
@@ -41,9 +41,9 @@
 </template>
 
 <script>
-import TheTaskbar from "@/components/main/TheTaskbar.vue";
-import StartMenu from "@/components/main/StartMenu.vue";
-import ActionCenter from "@/components/main/ActionCenter.vue";
+import TheTaskbar from "@/components/taskbar/TheTaskbar.vue";
+import StartMenu from "@/components/taskbar/StartMenu.vue";
+import ActionCenter from "@/components/taskbar/ActionCenter.vue";
 export default {
     components: {
         TheTaskbar,

@@ -131,9 +131,6 @@ export default {
         taskbarHeight() {
             return `h-[${this.height}px]`;
         },
-        taskbarActions() {
-            return this.$store.getters.taskbarActions;
-        },
     },
     methods: {
         setCurrentTime() {

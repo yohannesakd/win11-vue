@@ -18,24 +18,11 @@
                 <span class="absolute right-14">All Apps</span>
                 <p class="ml-6 text-sm font-semibold">Pinned</p>
                 <div class="start-menu-pinned-list grid grid-cols-6 py-8">
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
-                    <div class="start-menu-pinned-item"></div>
+                    <div
+                        class="start-menu-pinned-item"
+                        v-for="item in pinnedItems"
+                        :key="item"
+                    ></div>
                 </div>
             </div>
             <div id="start-menu-recommended">
@@ -43,12 +30,11 @@
                 <div
                     class="start-menu-recommended-list grid grid-cols-2 pt-4 px-4"
                 >
-                    <div class="start-menu-recommended-item"></div>
-                    <div class="start-menu-recommended-item"></div>
-                    <div class="start-menu-recommended-item"></div>
-                    <div class="start-menu-recommended-item"></div>
-                    <div class="start-menu-recommended-item"></div>
-                    <div class="start-menu-recommended-item"></div>
+                    <div
+                        class="start-menu-recommended-item"
+                        v-for="item in recommendedItems"
+                        :key="item"
+                    ></div>
                 </div>
             </div>
         </div>
@@ -71,6 +57,12 @@ export default {
             return this.startMenuStatus
                 ? `bottom-[${this.taskbarHeight + 16}px]`
                 : "-bottom-full";
+        },
+        pinnedItems() {
+            return Array.from(Array(18).keys());
+        },
+        recommendedItems() {
+            return Array.from(Array(6).keys());
         },
     },
 };

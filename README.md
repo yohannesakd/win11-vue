@@ -1,7 +1,7 @@
-# Vue 3 + Vite
+# Windows 11 in Vue
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This project is the recreation of Windows 11's UI and some functionality in Vue.js
 
-## Recommended IDE Setup
+- Inspired by [Win11-React](https://win11.blueedge.me) which is created by [blueedge](https://github.com/blueedgetechno)
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+I may have stolen some icons
