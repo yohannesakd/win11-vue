@@ -22,5 +22,6 @@ export default {
             let appStatus = state.allApps[payload].status;
             appStatus = !appStatus;
         },
+        toggleStart() {},
     },
 };
