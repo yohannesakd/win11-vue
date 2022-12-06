@@ -20,7 +20,7 @@
                         id="desktop-icon"
                         class="h-[84px] w-[82px] flex flex-col items-center rounded text-[13px] hover:bg-blue-100 hover:bg-opacity-25"
                     >
-                        <img src="./folder.png" class="w-14" />
+                        <img src="/icons/folderIcon.png" class="w-14" />
                         <span class="text-center">some text here</span>
                     </div>
                 </div>
