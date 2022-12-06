@@ -9,7 +9,7 @@
             ref="desktopContainer"
             class="h-full overflow-hidden relative z-0"
         >
-            <section id="screen" ref="screen" class="w-full relative">
+            <section id="screen" ref="screen" class="w-full relative z-0">
                 <div
                     id="desktop-icon-container"
                     class="flex flex-col w-fit flex-wrap h-full gap-y-1.5 p-2 text-white"

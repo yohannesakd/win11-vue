@@ -2,6 +2,7 @@
     <div
         id="action-center"
         class="bg-neutral-800 bottom-[64px] right-3 absolute rounded-lg flex flex-col overflow-hidden text-white z-0"
+        :class="actionCenterPosition"
     >
         <div id="action-center-main" class="p-6">
             <div id="action-center-grid" class="grid grid-cols-3 gap-4">
@@ -89,6 +90,14 @@ export default {
                 "Night Light": "nightlight",
             };
         },
+        actionCenterStatus() {
+            return this.$store.getters.actionCenter;
+        },
+        actionCenterPosition() {
+            return this.actionCenterStatus
+                ? `bottom-[${this.taskbarHeight + 16}px]`
+                : "-bottom-full";
+        },
     },
     methods: {
         handleSliderChange(e, ref) {
@@ -107,6 +116,7 @@ export default {
 #action-center {
     width: 360px;
     height: 390px;
+    transition: 300ms;
 }
 .action-center-icon {
     filter: invert();

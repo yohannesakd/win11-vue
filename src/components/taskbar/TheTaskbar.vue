@@ -63,7 +63,7 @@
             <div
                 id="taskbar-action-center"
                 class="flex items-center justify-center gap-2 transition hover:bg-gray-500 hover:bg-opacity-30 my-1 px-2 rounded-md"
-                @click="handleTaskbarActionCenter"
+                @click="handleActionCenter"
             >
                 <div>
                     <img
@@ -146,6 +146,9 @@ export default {
         },
         handleStartBtn() {
             this.$store.commit("toggleStartMenu");
+        },
+        handleActionCenter() {
+            this.$store.commit("toggleActionCenter");
         },
     },
     mounted() {
