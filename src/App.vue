@@ -82,7 +82,7 @@ export default {
 }
 #desktop-container {
     /* dynamic */
-    background-image: url(./wallpaper1.jpg);
+    background-image: url(/wallpapers/wallpaper1.jpg);
     @apply bg-cover bg-center bg-no-repeat;
 }
 </style>
