@@ -9,7 +9,7 @@
             ref="desktopContainer"
             class="h-full overflow-hidden relative z-0"
         >
-            <section id="screen" ref="screen" class="w-full relative z-0">
+            <section id="screen" ref="screen" class="w-full relative">
                 <div
                     id="desktop-icon-container"
                     class="flex flex-col w-fit flex-wrap h-full gap-y-1.5 p-2 text-white"
@@ -23,15 +23,27 @@
                         <img src="/icons/folderIcon.png" class="w-14" />
                         <span class="text-center">some text here</span>
                     </div>
+                    <div
+                        v-for="(value, key, index) in appList"
+                        :key="index"
+                        id="desktop-icon"
+                        class="h-[84px] w-[82px] flex flex-col items-center rounded text-[13px] hover:bg-blue-100 hover:bg-opacity-25"
+                        @click="openApp(key)"
+                    >
+                        <img
+                            :src="'/icons/' + value.icon + '.png'"
+                            class="w-10 py-1"
+                        />
+                        <span class="text-center">{{ value.name }}</span>
+                    </div>
                 </div>
-                <div class="absolute inset-0">
-                    <!-- <component v-for="" :is=""></component> -->
-                    <!-- 
-                        let apps = [a,b,c]
-                        let names = ["abda", "adaiugai", "adiaugia"]
-
-                     -->
-                </div>
+                <component
+                    v-for="(app, index) in openApps"
+                    :key="index"
+                    :is="app"
+                    :app-name="app"
+                    class="absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                ></component>
             </section>
             <the-taskbar class="z-10" :height="taskbarHeight"></the-taskbar>
             <start-menu :taskbarHeight="taskbarHeight"></start-menu>
@@ -57,7 +69,13 @@ export default {
     },
     computed: {
         icons() {
-            return Array.from(Array(23).keys());
+            return Array.from(Array(10).keys());
+        },
+        appList() {
+            return this.$store.getters.appList;
+        },
+        openApps() {
+            return this.$store.getters.openApps;
         },
     },
     methods: {
@@ -65,6 +83,9 @@ export default {
             let desktopHeight = window.innerHeight;
             this.$refs.screen.style.height =
                 desktopHeight - this.taskbarHeight + "px";
+        },
+        openApp(appName) {
+            this.$store.commit("openApp", appName);
         },
     },
     created() {

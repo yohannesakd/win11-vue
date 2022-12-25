@@ -2,12 +2,18 @@ export default {
     state() {
         return {
             allApps: {
-                browser: {
+                BrowserApp: {
                     name: "Browser",
                     status: "closed",
-                    icon: "test",
+                    icon: "edge",
+                },
+                FileExplorer: {
+                    name: "File Explorer",
+                    status: "closed",
+                    icon: "explorer",
                 },
             },
+            openApps: [],
             desktopApps: [],
             startMenuApps: [],
         };
@@ -16,12 +22,26 @@ export default {
         appList(state) {
             return state.allApps;
         },
+        openApps(state) {
+            return state.openApps;
+        },
     },
     mutations: {
-        toggleAppState(state, payload) {
-            let appStatus = state.allApps[payload].status;
+        toggleAppState(state, appName) {
+            let appStatus = state.allApps[appName].status;
             appStatus = !appStatus;
         },
-        toggleStart() {},
+        openApp(state, componentName) {
+            if (!state.openApps.includes(componentName)) {
+                state.openApps.push(componentName);
+                state.allApps[componentName].status = "active";
+            } else {
+                console.log("app already open");
+            }
+        },
+        closeApp(state, appName) {
+            state.openApps = state.openApps.filter((app) => app != appName);
+            state.allApps[appName].status = "closed";
+        },
     },
 };
